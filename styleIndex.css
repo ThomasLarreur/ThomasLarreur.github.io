@@ -1,0 +1,71 @@
+
+body {
+    background-image: url(background.jpg);
+    color: aliceblue;
+    font-family: "ubuntu";
+    margin: 0;
+}
+
+header {
+    font-size: larger;
+    text-align: center;
+    margin-bottom: 5em;
+
+}
+
+main {
+    margin-bottom: 5em;
+}
+
+section {
+    text-align: center;
+    font-size: 30px;
+}
+
+blockquote {
+    padding-left: 20em;
+    padding-right: 20em;
+}
+
+.competence-btn {
+    display: inline-block;
+    margin: 20px;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 30%;
+}
+
+.competence-btn:hover {
+    background-color: #2980b9;
+}
+
+.competence-text {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    background-color: #f0f0f0;
+    padding: 0 20px;
+    margin: 5px 0;
+    border-radius: 5px;
+    color: #2980b9;
+}
+
+.competence-text.open {
+    max-height: 200px;
+    padding: 10px 20px;
+}
+
+footer div button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 10px 20px;
+    
+}

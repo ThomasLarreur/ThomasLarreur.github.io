@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+		<title>Portfolio</title>
+		<meta name="description" content="Site internet du portfolio de Thomas Larreur, étudiant en BUT informatique à Lannion">
+		<meta name="keywords" content="portfolio,thomas,larreur" lang="fr">
+		<meta name="keywords" content="portfolio" lang="en">
+		<link rel="stylesheet" type="text/css" href="styleIndex.css">
+    </head>
+    <body>
+        <header>
+            <h1>Portfolio</h1>
+            <h2>Thomas Larreur</h2>
+
+            <blockquote>
+				Bienvenue sur mon Portfolio, actuellement en étude à l'IUT de Lannion et à la recherche d'une alternance de deux ans en tant que développeur,
+                découvrez mes différents projets informatiques réalisés au cours de mes années de lycée et BUT
+			</blockquote>
+        </header>
+        <main>
+            <section>
+                <h3>Mes Compétences</h3>
+    
+                <button class="competence-btn" onclick="toggleText('text1')">Compétence 1</button>
+                <div id="text1" class="competence-text">Description de la compétence 1 : Programmation en Python.</div>
+    
+                <button class="competence-btn" onclick="toggleText('text2')">Compétence 2</button>
+                <div id="text2" class="competence-text">Description de la compétence 2 : Développement Web HTML/CSS/JS.</div>
+    
+                <button class="competence-btn" onclick="toggleText('text3')">Compétence 3</button>
+                <div id="text3" class="competence-text">Description de la compétence 3 : Algorithmique et structures de données.</div>
+    
+                <button class="competence-btn" onclick="toggleText('text4')">Compétence 4</button>
+                <div id="text4" class="competence-text">Description de la compétence 4 : Bases de données et SQL.</div>
+    
+                <button class="competence-btn" onclick="toggleText('text5')">Compétence 5</button>
+                <div id="text5" class="competence-text">Description de la compétence 5 : Gestion de projet et travail en équipe.</div>
+    
+                <button class="competence-btn" onclick="toggleText('text6')">Compétence 6</button>
+                <div id="text6" class="competence-text">Description de la compétence 6 : Administration systèmes et réseaux.</div>
+            </section>
+        </main>
+        <footer style="background-color: #2c3e50; color: white; padding: 20px; text-align: center;">
+            <div style="margin-bottom: 15px;">
+                <button onclick="location.href='mailto:tonemail@example.com'">
+                    Me contacter
+                </button>
+            </div>
+            <div>
+                <a href="https://www.linkedin.com/in/thomas-larreur-6052ab354/" target="_blank" style="margin: 0 10px;">
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="32" height="32" style="vertical-align: middle;">
+                </a>
+                <a href="https://github.com/ThomasLarreur" target="_blank" style="margin: 0 10px;">
+                    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" width="32" height="32" style="vertical-align: middle;">
+                </a>
+            </div>
+        </footer>
+
+        <script>
+            function toggleText(id) {
+                const element = document.getElementById(id);
+                element.classList.toggle("open");
+            }
+        </script>
+    </body>
+</html>
