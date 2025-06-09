@@ -1,0 +1,1465 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Classement des Médailles</title>
+<style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                background: linear-gradient(#F8E1B7,#FFFFFF);
+                color: #024059;
+                
+            }
+            /*style du haut de page*/
+            header {
+                background: linear-gradient(to right,#044A59,#024059);
+                /*background-color: #024059;*/
+                height: 5em;
+                position: sticky;
+                top: 0;
+                z-index: 10;
+            }
+            /*réinitialiser les propriétés des listes*/
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            /*Boutons principaux*/
+            header > nav > ul > li {
+                background-color: #FFFFFF;
+                display: inline-block;
+                width: 13em;
+                height: 2em;
+                text-align: center;
+                font-weight: bolder;
+                font-size: 18px;
+                border-radius: 30px;
+                margin-top: 1em;
+                border: 3px solid #024059;
+                position: relative;
+                display: inline-block;
+            }
+            /*lors du survol d'un bouton principal*/
+            header > nav > ul > li:hover {
+                background-color: #024059;
+                border: 3px solid #FFFFFF;
+                
+            }
+            header > nav > ul > li:last-of-type{
+                position: absolute;
+                right: 5em;
+            }
+
+            /*Texte des boutons principaux*/
+            header ul > li > a {
+                text-decoration: none;
+                padding-top: 5px;
+                color: #024059;
+                display: block;
+            }
+
+            /*Changement du texte des boutons principaux lorsqu'on le survole*/
+            header nav > ul > li:hover > a {
+                color: #FFFFFF;
+            }
+
+            /*Sous menu qui est caché de base*/
+            header ul > li > ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 18px;
+                background-color:#FFFFFF;
+                padding: 0;
+                margin: 0;
+                min-width: 200px;
+            }
+
+            /*Boutons du sous menu*/
+            header ul > li > ul > li {
+                position: relative;
+                color: #FFFFFF;
+                background-color: #024059;
+                border-left: #FFFFFF solid 3px;
+                border-right: #FFFFFF solid 3px;
+            }
+
+            /*lorsqu'on survole un bouton principal on fait apparaitre le menu déroulant*/
+            header ul > li:hover > ul {
+                display: block;
+            }
+
+            /*sous sous menu (noms des sports)*/
+            header > nav > ul > li > ul > ul > li:hover {
+                background-color: #024059;
+                border-left: #FFFFFF solid 3px;
+                border-right: #FFFFFF solid 3px;
+            }
+            /*texte des sous sous menus*/
+            header > nav > ul > li > ul > ul > li:hover a {
+                color: #FFFFFF;
+            }
+            /*dernier enfant du sous sous menu*/
+            header > nav > ul > li > ul > ul:last-child {
+                border-bottom: #FFFFFF solid 3px;
+            }
+
+            /*logo du header*/
+            header img {
+                width: 3em;
+                height: 3em;
+                position: absolute;
+                right: 1em;
+                top: 1em;
+            }
+
+            /*responsive : à 1550*/ 
+
+            @media (max-width: 1550px) {
+                header > nav > ul > li {
+                    display: none;
+                }
+                header > nav > ul > li:first-of-type, header > nav > ul > li:last-of-type {
+                    background-color: #FFFFFF;
+                    display: inline-block;
+                    width: 13em;
+                    height: 2em;
+                    text-align: center;
+                    font-weight: bolder;
+                    font-size: 18px;
+                    border-radius: 30px;
+                    margin-top: 1em;
+                    border: 3px solid #024059;
+                    position: relative;
+                    display: inline-block;
+                }
+                header > nav > ul > li:last-of-type{
+                    position: absolute;
+                    right: 5em;
+                }
+
+
+                header > nav > ul > li:hover {
+                    background-color: #024059;
+                    border: 3px solid #FFFFFF;
+                
+                }
+            }
+
+            main {
+                margin: 10em;
+                background-color: #024059;
+                color: #FFF;
+            }
+            h1 {
+                position: absolute;
+                left: 25%;
+                right: 25%;
+                text-align: center;
+                background-color: #FFF;
+                border-radius: 30px;
+                width: fit-content;
+                padding: 5px;
+            }
+            table {
+                margin: auto;
+                border-collapse: collapse;
+                width: 100%;
+            }
+            th, td {
+                border: 1px solid ;
+                padding: 8px;
+                text-align: center;
+                font-size: 1.5em;
+            }
+            th {
+                
+                font-weight: bold;
+            }
+            td > img{
+                height: 80px;
+                margin-right: 15px; /* Pour espacer le drapeau du texte */
+                vertical-align: middle;
+                float: left; /* Permet de faire flotter le drapeau à gauche */
+            }
+            @media screen and (max-width: 1150px){
+                main {
+                
+                margin: 0;
+                margin-top: 10em;
+                margin-bottom: 3em;
+                background-color: #024059;
+                color: #FFF;
+                }
+                h1 {
+                    position: unset;
+                    text-align: center;
+                    background-color: #FFF;
+                    border-radius: 30px;
+                    width: fit-content;
+                    padding: 5px;
+                }
+                table {
+                    margin: auto;
+                    border-collapse: collapse;
+                    width: 100%;
+                }
+                th, td {
+                    border: 1px solid ;
+                    padding: 8px;
+                    text-align: center;
+                    font-size: 1em;
+                }
+                th {
+                    
+                    font-weight: bold;
+                }
+                td > img{
+                    height: 40px;
+                    margin-right: 5px; /* Pour espacer le drapeau du texte */
+                    vertical-align: middle;
+                    float: left; /* Permet de faire flotter le drapeau à gauche */
+                }   
+            }
+            @media screen and (max-width: 550px){
+            main {
+                
+                margin: 0;
+                margin-top: 10em;
+                margin-bottom: 3em;
+                background-color: #024059;
+                color: #FFF;
+                }
+                h1 {
+                    position: unset;
+                    text-align: center;
+                    background-color: #FFF;
+                    border-radius: 30px;
+                    width: fit-content;
+                    padding: 5px;
+                }
+                table {
+                    margin: auto;
+                    border-collapse: collapse;
+                    width: 100%;
+                }
+                th, td {
+                    border: 1px solid ;
+                    padding: 8px;
+                    text-align: center;
+                    font-size: 0.7em;
+                }
+                th {
+                    
+                    font-weight: bold;
+                }
+                td > img{
+                    height: 20pxpx;
+                    margin-right: 5px; /* Pour espacer le drapeau du texte */
+                    vertical-align: middle;
+                    float: left; /* Permet de faire flotter le drapeau à gauche */
+                }   
+            }
+
+            /*      Le paramétrage du footer          */
+
+            @media screen and (min-width: 900px){
+                /*      Le parametre du corp              */
+
+                /*      Le paramétrage du footer          */
+
+                /*style du bas de page*/
+                footer{
+                    width: 100%;
+                }
+
+                /*change les spécification des liens dans le bas de page*/
+                footer ul > li > a {
+                    text-decoration: none;
+                    padding-top: 5px;
+                    color: #024059;
+                    display: block;
+                }
+
+                /*change les spécification des listes dans le bas de page*/
+                footer ul {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                }
+
+
+                /*style de la première partie du bas de la page*/
+                footer nav{
+                    background: linear-gradient(to right, #044A59 21%, #096873 100%);
+                    height: 8em;
+                }
+
+                /*alignement du bloc logo et du bloc boutton dans la première partie du bas de la page*/
+                footer nav{
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+                /*alignement des bouttons dans la première partie du bas de la page*/
+                footer nav aside ul{
+                    display: inline-flex;
+                    flex-direction: column;
+                }
+
+                /*alignement des logos dans la première partie du bas de la page*/
+                footer nav div aside ul{
+                    display:inline-flex;
+                    flex-direction: column;
+                    position: relative;
+                    right: 5em;
+                }
+
+                /*positionnement du bloc des logos dans la première partie du bas de la page*/
+                footer nav div aside{
+                    float: right;
+                    padding-right: 2em;
+                }
+
+                /*positionnement de la mascot dans la première partie du bas de la page*/
+                footer nav div > img{
+                    position: relative;
+                    right: 3.5em;
+                    bottom: 1em;
+                }
+
+                /*mise en place d'espace au début et à la fin de la première partie du bas de la page*/
+                footer nav div{
+                    margin-right: 1em;
+                }
+                footer nav aside{
+                    margin-left: 1em;
+                }
+
+                /*style des bouttons de la première partie du bas de la page*/
+                footer > nav > aside > ul > li {
+                    background-color: #FFFFFF;
+                    width: 13em;
+                    height: 2em;
+                    text-align: center;
+                    font-weight: bolder;
+                    font-size: 15px;
+                    border-radius: 30px;
+                    margin-top: 1em;
+                    border: 3px solid #024059;
+                    position: relative;
+                }
+
+                /*style des bouttons une fois survolé de la première partie du bas de la page*/
+                footer > nav > aside > ul > li:hover {
+                    background-color: #024059;
+                    border: 3px solid #FFFFFF;
+                    
+                }
+
+                /*changement de la couleur du texte quand le boutton est survolé dans la première partie du bas de la page*/
+                footer nav > aside > ul > li:hover > a {
+                    color: #FFFFFF;
+                }
+
+                /*style du deuxième bloc du bas de la page*/
+                footer address{
+                    background-color: #044A59;
+                    color: #14A697;
+                    width: 100%;
+                }
+
+                /*alignement de tout les élément de la deuxième partie du bas de la page*/
+                footer address img,footer address p{
+                    display: inline-flex;
+                }
+
+                /*espacement entre les blocs de la deuxième partie du bas de la page*/
+                footer address{
+                    display: flex;
+                    justify-content: space-between;
+                    height: 50px;
+                }
+
+                /*mise en place d'espace au début et à la fin de la deuxième partie du bas de la page*/
+                footer address p{
+                    margin-left: 1em;
+                    margin-right: 1em;
+                }
+
+                /*alignement vertical de l'image de la deuxième partie du bas de la page*/
+                footer address img{
+                    position: fixed;
+                    left: 50%;
+                    width: 50px;
+                }
+            }
+
+            @media (max-width: 900px){
+                /*      Le parametre du corp              */
+
+                /*style du corp de la page*/
+                body{
+                    margin:0;
+                }
+
+                /*      Le paramétrage du footer          */
+
+                /*style du bas de page*/
+                footer{
+                    width: 100%;
+                }
+
+                /*change les spécification des liens dans le bas de page*/
+                footer ul > li > a {
+                    text-decoration: none; /*pour mettre les liens sans style (surligne)*/
+                    display: block; /*pour mettre le padding*/
+                    padding-top: 5px;
+                    color: #024059;/*pour changer la couleur du lien (bleu normalement)*/
+                    
+                }
+                /*change les spécification des listes dans le bas de page*/
+                footer ul {
+                    list-style: none;/*enleve la puce des liste du footer*/
+                    padding: 0;/*enleve les écarts entre le texte et la bordure du pavé*/
+                    margin: 0;/*enleve les écart entre le bloc ul et ses prochains*/
+                }
+                /*style de la première partie du bas de la page*/
+                footer nav{
+                    background: linear-gradient(to right, #044A59 21%, #096873 100%);/*met le fond du pavé avec un dégradé*/
+                    height: 16em; /*met la taille de la première partie*/ 
+                }
+
+                /*style des bouttons de la première partie du bas de la page*/
+                footer > nav > aside > ul > li {
+                    width: 13em; /*La largeur d'un boutton*/
+                    height: 2em; /*La hauteur d'un boutton*/
+                    background-color: #FFFFFF; /*met en blanc l'arrière plan du boutton*/
+                    text-align: center; /*Alignement du texte dans le boutton*/
+                    font-weight: bolder; /*Met le style du texte en gras*/
+                    font-size: 15px; /*met la taille du text à 15px*/
+                    border-radius: 30px; /*met les bords d'un carré en arrondi*/
+                    margin-top: 1em; /*centre le text en horizontal*/
+                    border: 3px solid #024059; /*met des bordures sur les bouttons*/
+                }
+
+                /*alignement des bouttons dans la première partie du bas de la page*/
+                footer nav aside > ul{
+                    float: left;
+                }
+
+                /*alignement des logos avec les logos à droite de la page */
+                footer nav div aside{
+                    margin-left: 1em;
+                    margin-right: 1em;
+                }
+
+                footer nav div, footer nav div aside ul + ul + ul{
+                    display: inline-block;
+                }
+
+                /*positionnement du bloc des logos dans la première partie du bas de la page*/
+                footer nav div aside{
+                    float: right;
+                }
+
+                footer nav div aside img{
+                    padding-right: 0.5em;
+                }
+
+                footer nav div h2{
+                    padding-left: 1em;
+                }
+
+                /*positionnement de la mascot dans la première partie du bas de la page*/
+                footer nav div > img{
+                    position: relative;
+                    left: 1.5em;
+                    bottom: 1em;
+                }
+
+                /****************/
+                /****************/
+                /****************/
+                /*style du deuxième bloc du bas de la page*/
+                footer address{
+                    background-color: #044A59;
+                    color: #14A697;
+                    width: 100%;
+                }
+
+                /*alignement de tout les élément de la deuxième partie du bas de la page*/
+                footer address img,footer address p{
+                    display: inline-flex;
+                }
+
+                /*espacement entre les blocs de la deuxième partie du bas de la page*/
+                footer address{
+                    display: flex;
+                    justify-content: space-between;
+                    height: 50px;
+                }
+
+                /*mise en place d'espace au début et à la fin de la deuxième partie du bas de la page*/
+                footer address p{
+                    margin-left: 1em;
+                    margin-right: 1em;
+                    
+                }
+
+                /*alignement vertical de l'image de la deuxième partie du bas de la page*/
+                footer address img{
+                    position: fixed;
+                    left:45%;
+                    width: 50px;
+                }
+
+            }
+        </style>
+</head>
+<body>
+     <header>
+        <nav>
+            <ul>
+                <li> 
+                    <a href="">SPORTS</a> 
+                    <ul>
+                        <li>Sports d'équipe</li>
+                        <ul> 
+                            <li><a href="">Volley-Ball</a></li>
+                            <li><a href="">Basket-Ball</a></li>
+                            <li><a href="">Hand-Ball</a></li>
+                        </ul>
+                        <li>Sports de raquette</li>
+                        <ul>
+                            <li><a href="">Badminton</a></li>
+                            <li><a href="">Tennis</a></li>
+                            <li><a href="">Tennis de table</a></li>
+                        </ul>
+
+                    </ul>
+                </li>
+                <li> <a href="">JEUX PARALYMPIQUES</a> </li>
+                <li> <a href="">RELAI DE LA FLAMME</a> </li>
+                <li> <a href="">SITES</a> </li>
+                <li> <a href="">COMITE</a> </li>
+                <li> <a href="">FRANCAIS</a> </li>
+                <a href="./accueil.html"><img src="./Images/Header/jo2024.png" alt="logo" title="logo"></a>
+            </ul>
+        </nav>
+    </header>
+<h1>Classement des pays des Jeux Olympiques de Paris 2024</h1>
+<main>
+    <table class="dataframe table table-striped">
+    <thead>
+    <tr style="text-align: center;">
+    <th>Classement</th>
+    <th>Pays</th>
+    <th>Or</th>
+    <th>Argent</th>
+    <th>Bronze</th>
+    <th>Total</th>
+    <th>Pourcentage</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>1</td>
+    <td><img src="Images/Accueil/Drapeaux/us.png" alt="US"> États-Unis</td>
+    <td>40</td>
+    <td>44</td>
+    <td>42</td>
+    <td>126</td>
+    <td>12.12</td>
+    </tr>
+    <tr>
+    <td>2</td>
+    <td><img src="Images/Accueil/Drapeaux/cn.png" alt="cn">Chine</td>
+    <td>40</td>
+    <td>27</td>
+    <td>24</td>
+    <td>91</td>
+    <td>8.75</td>
+    </tr>
+    <tr>
+    <td>3</td>
+    <td><img src="Images/Accueil/Drapeaux/gb.png" alt="gb">Grande-Bretagne</td>
+    <td>14</td>
+    <td>22</td>
+    <td>29</td>
+    <td>65</td>
+    <td>6.25</td>
+    </tr>
+    <tr>
+    <td>4</td>
+    <td><img src="Images/Accueil/Drapeaux/fr.png" alt="fr">France</td>
+    <td>16</td>
+    <td>26</td>
+    <td>22</td>
+    <td>64</td>
+    <td>6.15</td>
+    </tr>
+    <tr>
+    <td>5</td>
+    <td><img src="Images/Accueil/Drapeaux/au.png" alt="au">Australie</td>
+    <td>18</td>
+    <td>19</td>
+    <td>16</td>
+    <td>53</td>
+    <td>5.10</td>
+    </tr>
+    <tr>
+    <td>6</td>
+    <td><img src="Images/Accueil/Drapeaux/jp.png" alt="ja">Japon</td>
+    <td>20</td>
+    <td>12</td>
+    <td>13</td>
+    <td>45</td>
+    <td>4.33</td>
+    </tr>
+    <tr>
+    <td>7</td>
+    <td><img src="Images/Accueil/Drapeaux/it.png" alt="it">Italie</td>
+    <td>12</td>
+    <td>13</td>
+    <td>15</td>
+    <td>40</td>
+    <td>3.85</td>
+    </tr>
+    <tr>
+    <td>8</td>
+    <td><img src="Images/Accueil/Drapeaux/nl.png" alt="nl">Pays-Bas</td>
+    <td>15</td>
+    <td>7</td>
+    <td>12</td>
+    <td>34</td>
+    <td>3.27</td>
+    </tr>
+    <tr>
+    <td>9</td>
+    <td><img src="Images/Accueil/Drapeaux/de.png" alt="de">Allemagne</td>
+    <td>12</td>
+    <td>13</td>
+    <td>8</td>
+    <td>33</td>
+    <td>3.17</td>
+    </tr>
+    <tr>
+    <td>10</td>
+    <td><img src="Images/Accueil/Drapeaux/kr.png" alt="kr">Corée du Sud</td>
+    <td>13</td>
+    <td>9</td>
+    <td>10</td>
+    <td>32</td>
+    <td>3.08</td>
+    </tr>
+    <tr>
+    <td>11</td>
+    <td><img src="Images/Accueil/Drapeaux/ca.png" alt="ca">Canada</td>
+    <td>9</td>
+    <td>7</td>
+    <td>11</td>
+    <td>27</td>
+    <td>2.60</td>
+    </tr>
+    <tr>
+    <td>12</td>
+    <td><img src="Images/Accueil/Drapeaux/br.png" alt="br">Brésil</td>
+    <td>3</td>
+    <td>7</td>
+    <td>10</td>
+    <td>20</td>
+    <td>1.92</td>
+    </tr>
+    <tr>
+    <td>13</td>
+    <td><img src="Images/Accueil/Drapeaux/nz.png" alt="nz">Nouvelle-Zélande</td>
+    <td>10</td>
+    <td>7</td>
+    <td>3</td>
+    <td>20</td>
+    <td>1.92</td>
+    </tr>
+    <tr>
+    <td>14</td>
+    <td><img src="Images/Accueil/Drapeaux/hu.png" alt="hu">Hongrie</td>
+    <td>6</td>
+    <td>7</td>
+    <td>6</td>
+    <td>19</td>
+    <td>1.83</td>
+    </tr>
+    <tr>
+    <td>15</td>
+    <td><img src="Images/Accueil/Drapeaux/es.png" alt="es">Espagne</td>
+    <td>5</td>
+    <td>4</td>
+    <td>9</td>
+    <td>18</td>
+    <td>1.73</td>
+    </tr>
+    <tr>
+    <td>16</td>
+    <td><img src="Images/Accueil/Drapeaux/uz.png" alt="uz">Ouzbékistan</td>
+    <td>8</td>
+    <td>2</td>
+    <td>3</td>
+    <td>13</td>
+    <td>1.25</td>
+    </tr>
+    <tr>
+    <td>17</td>
+    <td><img src="Images/Accueil/Drapeaux/ir.png" alt="ir">Iran</td>
+    <td>3</td>
+    <td>6</td>
+    <td>3</td>
+    <td>12</td>
+    <td>1.15</td>
+    </tr>
+    <tr>
+    <td>18</td>
+    <td><img src="Images/Accueil/Drapeaux/ua.png" alt="ua">Ukraine</td>
+    <td>3</td>
+    <td>5</td>
+    <td>4</td>
+    <td>12</td>
+    <td>1.15</td>
+    </tr>
+    <tr>
+    <td>19</td>
+    <td><img src="Images/Accueil/Drapeaux/ke.png" alt="ke">Kenya</td>
+    <td>4</td>
+    <td>2</td>
+    <td>5</td>
+    <td>11</td>
+    <td>1.06</td>
+    </tr>
+    <tr>
+    <td>20</td>
+    <td><img src="Images/Accueil/Drapeaux/se.png" alt="se">Suède</td>
+    <td>4</td>
+    <td>4</td>
+    <td>3</td>
+    <td>11</td>
+    <td>1.06</td>
+    </tr>
+    <tr>
+    <td>21</td>
+    <td><img src="Images/Accueil/Drapeaux/pl.png" alt="pl">Pologne</td>
+    <td>1</td>
+    <td>4</td>
+    <td>5</td>
+    <td>10</td>
+    <td>0.96</td>
+    </tr>
+    <tr>
+    <td>22</td>
+    <td><img src="Images/Accueil/Drapeaux/be.png" alt="be">Belgique</td>
+    <td>3</td>
+    <td>1</td>
+    <td>6</td>
+    <td>10</td>
+    <td>0.96</td>
+    </tr>
+    <tr>
+    <td>23</td>
+    <td><img src="Images/Accueil/Drapeaux/ro.png" alt="ro">Roumanie</td>
+    <td>3</td>
+    <td>4</td>
+    <td>2</td>
+    <td>9</td>
+    <td>0.87</td>
+    </tr>
+    <tr>
+    <td>24</td>
+    <td><img src="Images/Accueil/Drapeaux/dk.png" alt="dk">Danemark</td>
+    <td>2</td>
+    <td>2</td>
+    <td>5</td>
+    <td>9</td>
+    <td>0.87</td>
+    </tr>
+    <tr>
+    <td>25</td>
+    <td><img src="Images/Accueil/Drapeaux/cu.png" alt="cu">Cuba</td>
+    <td>2</td>
+    <td>1</td>
+    <td>6</td>
+    <td>9</td>
+    <td>0.87</td>
+    </tr>
+    <tr>
+    <td>26</td>
+    <td><img src="Images/Accueil/Drapeaux/ch.png" alt="ch">Suisse</td>
+    <td>1</td>
+    <td>2</td>
+    <td>5</td>
+    <td>8</td>
+    <td>0.77</td>
+    </tr>
+    <tr>
+    <td>27</td>
+    <td><img src="Images/Accueil/Drapeaux/tr.png" alt="tr">Turquie</td>
+    <td>0</td>
+    <td>3</td>
+    <td>5</td>
+    <td>8</td>
+    <td>0.77</td>
+    </tr>
+    <tr>
+    <td>28</td>
+    <td><img src="Images/Accueil/Drapeaux/gr.png" alt="gr">Grèce</td>
+    <td>1</td>
+    <td>1</td>
+    <td>6</td>
+    <td>8</td>
+    <td>0.77</td>
+    </tr>
+    <tr>
+    <td>29</td>
+    <td><img src="Images/Accueil/Drapeaux/no.png" alt="no">Norvège</td>
+    <td>4</td>
+    <td>1</td>
+    <td>3</td>
+    <td>8</td>
+    <td>0.77</td>
+    </tr>
+    <tr>
+    <td>30</td>
+    <td><img src="Images/Accueil/Drapeaux/ie.png" alt="ie">Irlande</td>
+    <td>4</td>
+    <td>0</td>
+    <td>3</td>
+    <td>7</td>
+    <td>0.67</td>
+    </tr>
+    <tr>
+    <td>31</td>
+    <td><img src="Images/Accueil/Drapeaux/tw.png" alt="tw">Taïwan</td>
+    <td>2</td>
+    <td>0</td>
+    <td>5</td>
+    <td>7</td>
+    <td>0.67</td>
+    </tr>
+    <tr>
+    <td>32</td>
+    <td><img src="Images/Accueil/Drapeaux/il.png" alt="il">Israël</td>
+    <td>1</td>
+    <td>5</td>
+    <td>1</td>
+    <td>7</td>
+    <td>0.67</td>
+    </tr>
+    <tr>
+    <td>33</td>
+    <td><img src="Images/Accueil/Drapeaux/kz.png" alt="kz">Kazakhstan</td>
+    <td>1</td>
+    <td>3</td>
+    <td>3</td>
+    <td>7</td>
+    <td>0.67</td>
+    </tr>
+    <tr>
+    <td>34</td>
+    <td><img src="Images/Accueil/Drapeaux/az.png" alt="az">Azerbaïdjan</td>
+    <td>2</td>
+    <td>2</td>
+    <td>3</td>
+    <td>7</td>
+    <td>0.67</td>
+    </tr>
+    <tr>
+    <td>35</td>
+    <td><img src="Images/Accueil/Drapeaux/us-ga.png" alt="us-ga">Géorgie</td>
+    <td>3</td>
+    <td>3</td>
+    <td>1</td>
+    <td>7</td>
+    <td>0.67</td>
+    </tr>
+    <tr>
+    <td>36</td>
+    <td><img src="Images/Accueil/Drapeaux/bg.png" alt="bg">Bulgarie</td>
+    <td>3</td>
+    <td>1</td>
+    <td>3</td>
+    <td>7</td>
+    <td>0.67</td>
+    </tr>
+    <tr>
+    <td>37</td>
+    <td><img src="Images/Accueil/Drapeaux/hr.png" alt="hr">Croatie</td>
+    <td>2</td>
+    <td>2</td>
+    <td>3</td>
+    <td>7</td>
+    <td>0.67</td>
+    </tr>
+    <tr>
+    <td>38</td>
+    <td><img src="Images/Accueil/Drapeaux/jm.png" alt="jm">Jamaïque</td>
+    <td>1</td>
+    <td>3</td>
+    <td>2</td>
+    <td>6</td>
+    <td>0.58</td>
+    </tr>
+    <tr>
+    <td>39</td>
+    <td><img src="Images/Accueil/Drapeaux/kg.png" alt="kg">Kirghizistan</td>
+    <td>0</td>
+    <td>2</td>
+    <td>4</td>
+    <td>6</td>
+    <td>0.58</td>
+    </tr>
+    <tr>
+    <td>40</td>
+    <td><img src="Images/Accueil/Drapeaux/za.png" alt="za">Afrique du Sud</td>
+    <td>1</td>
+    <td>3</td>
+    <td>2</td>
+    <td>6</td>
+    <td>0.58</td>
+    </tr>
+    <tr>
+    <td>41</td>
+    <td><img src="Images/Accueil/Drapeaux/kp.png" alt="kp">Corée du Nord</td>
+    <td>0</td>
+    <td>2</td>
+    <td>4</td>
+    <td>6</td>
+    <td>0.58</td>
+    </tr>
+    <tr>
+    <td>42</td>
+    <td><img src="Images/Accueil/Drapeaux/in.png" alt="in">Inde</td>
+    <td>0</td>
+    <td>1</td>
+    <td>5</td>
+    <td>6</td>
+    <td>0.58</td>
+    </tr>
+    <tr>
+    <td>43</td>
+    <td><img src="Images/Accueil/Drapeaux/th.png" alt="th">Thaïlande</td>
+    <td>1</td>
+    <td>3</td>
+    <td>2</td>
+    <td>6</td>
+    <td>0.58</td>
+    </tr>
+    <tr>
+    <td>44</td>
+    <td><img src="Images/Accueil/Drapeaux/mx.png" alt="mx">Mexique</td>
+    <td>0</td>
+    <td>3</td>
+    <td>2</td>
+    <td>5</td>
+    <td>0.48</td>
+    </tr>
+    <tr>
+    <td>45</td>
+    <td><img src="Images/Accueil/Drapeaux/cz.png" alt="cz">Rép. Tchèque</td>
+    <td>3</td>
+    <td>0</td>
+    <td>2</td>
+    <td>5</td>
+    <td>0.48</td>
+    </tr>
+    <tr>
+    <td>46</td>
+    <td><img src="Images/Accueil/Drapeaux/rs.png" alt="rs">Serbie</td>
+    <td>3</td>
+    <td>1</td>
+    <td>1</td>
+    <td>5</td>
+    <td>0.48</td>
+    </tr>
+    <tr>
+    <td>47</td>
+    <td><img src="Images/Accueil/Drapeaux/at.png" alt="at">Autriche</td>
+    <td>2</td>
+    <td>0</td>
+    <td>3</td>
+    <td>5</td>
+    <td>0.48</td>
+    </tr>
+    <tr>
+    <td>48</td>
+    <td><img src="Images/Accueil/Drapeaux/ec.png" alt="ec">Equateur</td>
+    <td>1</td>
+    <td>2</td>
+    <td>2</td>
+    <td>5</td>
+    <td>0.48</td>
+    </tr>
+    <tr>
+    <td>49</td>
+    <td><img src="Images/Accueil/Drapeaux/bh.png" alt="bh">Bahrein</td>
+    <td>2</td>
+    <td>1</td>
+    <td>1</td>
+    <td>4</td>
+    <td>0.38</td>
+    </tr>
+    <tr>
+    <td>50</td>
+    <td><img src="Images/Accueil/Drapeaux/ph.png" alt="ph">Philippines</td>
+    <td>2</td>
+    <td>0</td>
+    <td>2</td>
+    <td>4</td>
+    <td>0.38</td>
+    </tr>
+    <tr>
+    <td>51</td>
+    <td><img src="Images/Accueil/Drapeaux/hk.png" alt="hk">Hong-Kong</td>
+    <td>2</td>
+    <td>0</td>
+    <td>2</td>
+    <td>4</td>
+    <td>0.38</td>
+    </tr>
+    <tr>
+    <td>52</td>
+    <td><img src="Images/Accueil/Drapeaux/am.png" alt="am">Arménie</td>
+    <td>0</td>
+    <td>3</td>
+    <td>1</td>
+    <td>4</td>
+    <td>0.38</td>
+    </tr>
+    <tr>
+    <td>53</td>
+    <td><img src="Images/Accueil/Drapeaux/co.png" alt="co">Colombie</td>
+    <td>0</td>
+    <td>3</td>
+    <td>1</td>
+    <td>4</td>
+    <td>0.38</td>
+    </tr>
+    <tr>
+    <td>54</td>
+    <td><img src="Images/Accueil/Drapeaux/lt.png" alt="lt">Lituanie</td>
+    <td>0</td>
+    <td>2</td>
+    <td>2</td>
+    <td>4</td>
+    <td>0.38</td>
+    </tr>
+    <tr>
+    <td>55</td>
+    <td><img src="Images/Accueil/Drapeaux/pt.png" alt="pt">Portugal</td>
+    <td>1</td>
+    <td>2</td>
+    <td>1</td>
+    <td>4</td>
+    <td>0.38</td>
+    </tr>
+    <tr>
+    <td>56</td>
+    <td><img src="Images/Accueil/Drapeaux/md.png" alt="md">Moldavie</td>
+    <td>0</td>
+    <td>1</td>
+    <td>3</td>
+    <td>4</td>
+    <td>0.38</td>
+    </tr>
+    <tr>
+    <td>57</td>
+    <td><img src="Images/Accueil/Drapeaux/et.png" alt="et">Ethiopie</td>
+    <td>1</td>
+    <td>3</td>
+    <td>0</td>
+    <td>4</td>
+    <td>0.38</td>
+    </tr>
+    <tr>
+    <td>58</td>
+    <td><img src="Images/Accueil/Drapeaux/tj.png" alt="tj">Tadjikistan</td>
+    <td>0</td>
+    <td>0</td>
+    <td>3</td>
+    <td>3</td>
+    <td>0.29</td>
+    </tr>
+    <tr>
+    <td>59</td>
+    <td><img src="Images/Accueil/Drapeaux/do.png" alt="do">Rép. Dominicaine</td>
+    <td>1</td>
+    <td>0</td>
+    <td>2</td>
+    <td>3</td>
+    <td>0.29</td>
+    </tr>
+    <tr>
+    <td>60</td>
+    <td><img src="Images/Accueil/Drapeaux/tn.png" alt="tn">Tunisie</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>3</td>
+    <td>0.29</td>
+    </tr>
+    <tr>
+    <td>61</td>
+    <td><img src="Images/Accueil/Drapeaux/id.png" alt="id">Indonésie</td>
+    <td>2</td>
+    <td>0</td>
+    <td>1</td>
+    <td>3</td>
+    <td>0.29</td>
+    </tr>
+    <tr>
+    <td>62</td>
+    <td><img src="Images/Accueil/Drapeaux/ar.png" alt="ar">Argentine</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>3</td>
+    <td>0.29</td>
+    </tr>
+    <tr>
+    <td>63</td>
+    <td><img src="Images/Accueil/Drapeaux/si.png" alt="si">Slovénie</td>
+    <td>2</td>
+    <td>1</td>
+    <td>0</td>
+    <td>3</td>
+    <td>0.29</td>
+    </tr>
+    <tr>
+    <td>64</td>
+    <td><img src="Images/Accueil/Drapeaux/dz.png" alt="dz">Algérie</td>
+    <td>2</td>
+    <td>0</td>
+    <td>1</td>
+    <td>3</td>
+    <td>0.29</td>
+    </tr>
+    <tr>
+    <td>65</td>
+    <td><img src="Images/Accueil/Drapeaux/eg.png" alt="eg">Egypte</td>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+    <td>3</td>
+    <td>0.29</td>
+    </tr>
+    <tr>
+    <td>66</td>
+    <td><img src="Images/Accueil/Drapeaux/ug.png" alt="ug">Ouganda</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>2</td>
+    <td>0.19</td>
+    </tr>
+    <tr>
+    <td>67</td>
+    <td><img src="Images/Accueil/Drapeaux/lc.png" alt="lc">Sainte-Lucie</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>2</td>
+    <td>0.19</td>
+    </tr>
+    <tr>
+    <td>68</td>
+    <td><img src="Images/Accueil/Drapeaux/bw.png" alt="bw">Botswana</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>2</td>
+    <td>0.19</td>
+    </tr>
+    <tr>
+    <td>69</td>
+    <td><img src="Images/Accueil/Drapeaux/pr.png" alt="pr">Porto-Rico</td>
+    <td>0</td>
+    <td>0</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0.19</td>
+    </tr>
+    <tr>
+    <td>70</td>
+    <td><img src="Images/Accueil/Drapeaux/gu.png" alt="gu">Guatemala</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>2</td>
+    <td>0.19</td>
+    </tr>
+    <tr>
+    <td>71</td>
+    <td><img src="Images/Accueil/Drapeaux/pe.png" alt="pe">Pérou</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>2</td>
+    <td>0.19</td>
+    </tr>
+    <tr>
+    <td>72</td>
+    <td><img src="Images/Accueil/Drapeaux/cl.png" alt="cl">Chili</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>2</td>
+    <td>0.19</td>
+    </tr>
+    <tr>
+    <td>73</td>
+    <td><img src="Images/Accueil/Drapeaux/al.png" alt="al">Albanie</td>
+    <td>0</td>
+    <td>0</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0.19</td>
+    </tr>
+    <tr>
+    <td>74</td>
+    <td><img src="Images/Accueil/Drapeaux/ma.png" alt="ma">Maroc</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>2</td>
+    <td>0.19</td>
+    </tr>
+    <tr>
+    <td>75</td>
+    <td><img src="Images/Accueil/Drapeaux/my.png" alt="my">Malaisie</td>
+    <td>0</td>
+    <td>0</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0.19</td>
+    </tr>
+    <tr>
+    <td>76</td>
+    <td><img src="Images/Accueil/Drapeaux/xk.png" alt="xk">Kosovo</td>
+    <td>0</td>
+    <td>1</td>
+    <td>1</td>
+    <td>2</td>
+    <td>0.19</td>
+    </tr>
+    <tr>
+    <td>77</td>
+    <td><img src="Images/Accueil/Drapeaux/gd.png" alt="gd">Grenade</td>
+    <td>0</td>
+    <td>0</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0.19</td>
+    </tr>
+    <tr>
+    <td>78</td>
+    <td><img src="Images/Accueil/Drapeaux/cv.png" alt="cv">Cap Vert</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0.10</td>
+    </tr>
+    <tr>
+    <td>79</td>
+    <td><img src="Images/Accueil/Drapeaux/sk.png" alt="dz">Slovaquie</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0.10</td>
+    </tr>
+    <tr>
+    <td>80</td>
+    <td><img src="Images/Accueil/Drapeaux/sg.png" alt="sg">Singapour</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0.10</td>
+    </tr>
+    <tr>
+    <td>81</td>
+    <td><img src="Images/Accueil/Drapeaux/jo.png" alt="jo">Jordanie</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0.10</td>
+    </tr>
+    <tr>
+    <td>82</td>
+    <td><img src="Images/Accueil/Drapeaux/ci.png" alt="ci">Côte d'Ivoire</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0.10</td>
+    </tr>
+    <tr>
+    <td>83</td>
+    <td><img src="Images/Accueil/Drapeaux/qa.png" alt="qa">Qatar</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0.10</td>
+    </tr>
+    <tr>
+    <td>84</td>
+    <td><img src="Images/Accueil/Drapeaux/cy.png" alt="dz">Chypre</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0.10</td>
+    </tr>
+    <tr>
+    <td>85</td>
+    <td><img src="Images/Accueil/Drapeaux/pa.png" alt="pa">Panama</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0.10</td>
+    </tr>
+    <tr>
+    <td>86</td>
+    <td><img src="Images/Accueil/Drapeaux/pk.png" alt="pk">Pakistan</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0.10</td>
+    </tr>
+    <tr>
+    <td>87</td>
+    <td><img src="Images/Accueil/Drapeaux/dm.png" alt="dz">Dominique</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0.10</td>
+    </tr>
+    <tr>
+    <td>88</td>
+    <td><img src="Images/Accueil/Drapeaux/mn.png" alt="mn">Mongolie</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0.10</td>
+    </tr>
+    <tr>
+    <td>89</td>
+    <td><img src="Images/Accueil/Drapeaux/logo_jo.png" alt="logo_jo">Equipe olympique des réfugiés</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0.10</td>
+    </tr>
+    <tr>
+    <td>90</td>
+    <td><img src="Images/Accueil/Drapeaux/fj.png" alt="fj">Fidji</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0.10</td>
+    </tr>
+    <tr>
+    <td>91</td>
+    <td><img src="Images/Accueil/Drapeaux/zm.png" alt="zm">Zambie</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0.10</td>
+    </tr>
+    </tbody>
+    </table>
+</main>
+<footer>
+            <nav>
+                <aside>
+                    <ul>
+                        <li>
+                            <a href="">Boutique</a>
+                        </li>
+                        <li>
+                            <a href="">Billeterie</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a href="">Jeux paralympique</a>
+                        </li>
+                        <li>
+                            <a href="">Partenaires officiels</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a href="">Des questions</a>
+                        </li>
+                        <li>
+                            <a href="">Sites des JO</a>
+                        </li>
+                    </ul>
+                </aside>
+                <div>
+                    <h2>Nos Réseaux</h2>
+                    <img src="./Images/Footer/phryge.png" title="mascotte" alt="image de la mascotte 2024-2025" width=auto height=80px>
+                    <aside>
+                        <ul>
+                            <li>
+                                <img src="./Images/Footer/logo-linkedin.png" title="logo linkedin" alt="linkedin" width=20px height=20px>
+                            </li>
+                            <li>
+                                <img src="./Images/Footer/logo-de-lapplication-facebook.png" title="logo facebook" alt="facebook" width=20px height=20px>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <img src="./Images/Footer/tiktok.png" title="logo tiktok" alt="tiktok" width=20px height=20px>
+                            </li>
+                            <li>
+                                <img src="./Images/Footer/youtube.png" title="logo youtube" alt="youtube" width=20px height=20px>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <img src="./Images/Footer/X.png" title="logo Footer" alt="X" width=20px height=20px>
+                            </li>
+                            <li>
+                                <img src="./Images/Footer/logo-instagram.png" title="logo instagram" alt="instagram" width=20px height=20px>
+                            </li>
+                        </ul>
+                    </aside>
+                </div>
+            </nav>
+            <address>
+                <p>
+                    SAE-105  2024
+                </p>
+                <img src="./Images/Footer/logoJo.png" title="logo des JO" alt="logo des JO">
+                <p>
+                    Projet réalisé par l’équipe D12
+                </p>
+            </address>
+        </footer>
+
+</body>
+</html>
